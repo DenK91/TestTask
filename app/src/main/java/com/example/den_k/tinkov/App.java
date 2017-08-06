@@ -1,6 +1,6 @@
 package com.example.den_k.tinkov;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.example.den_k.tinkov.di.AppComponent;
 import com.example.den_k.tinkov.di.DaggerAppComponent;
@@ -9,7 +9,7 @@ import com.example.den_k.tinkov.utils.db.RealmMigration;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-public class App extends Application {
+public class App extends MultiDexApplication {
 
     private static AppComponent component;
 
