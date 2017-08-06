@@ -14,6 +14,9 @@ import com.example.den_k.tinkov.view.base.BasePresentableActivity;
 import com.example.den_k.tinkov.view.details_screen.NewsDetailActivity;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -84,6 +87,11 @@ public class MainActivity extends BasePresentableActivity<MainActivityPresenter>
 
     @Override
     public void setTitles(List<PostTitle> aPostTitles) {
+        Collections.sort(aPostTitles, new Comparator<PostTitle>() {
+            public int compare(PostTitle o1, PostTitle o2) {
+                return ((Long)o2.getPubDate().getMilliseconds()).compareTo(o1.getPubDate().getMilliseconds());
+            }
+        });
         mAdapter.setPostTitles(aPostTitles);
         mSwipeRefreshLayout.setRefreshing(false);
         updateEmptyListViewState();
